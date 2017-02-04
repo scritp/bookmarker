@@ -8,11 +8,12 @@
     <title>Bookmarker &amp; Reading list</title>
     <link href="css/bootstrap.min.css" rel="stylesheet">
     <link href="css/style.css" rel="stylesheet">
-  </head>
+    </head>
 
-  <body onload="fetchBookmarks()">
+  <body>
 
 	<div class="container">
+
 	    <div class="col-lg-4">
 	      <div class="header clearfix">
 	        <nav>
@@ -30,28 +31,38 @@
 					<div class="form-group">
 			    		<input type="text" class="form-control" id="siteUrl" placeholder="URL">
 			        </div>
-			       	<div class="form-group">
-			        	<input type="text" class="form-control" id="siteName" placeholder="Name">
+			       	<div class="form-group" style="">
+			        	<input type="text" class="form-control" style="width:70%;" id="siteName" placeholder="Name">
+			        	<button type="submit" style="float:right; width:20%; " class="btn btn-primary">Add</button>
 			        </div>
-			        <button type="submit" class="btn btn-primary">Add</button>
+			        
 			    </form>
 			</div>
-	        
-	      
-
 	    </div>
+	    
 	    <div class="col-lg-8">
 	      <div class="header clearfix">
 	        <h3 class="text-muted">Reading list</h3>
 	      </div>
 	        <table class="table">
-	        	<tbody id="bookmarksResults">
+	        	<tbody id="articlesResults">
 	        	</tbody>
 	        </table>
+			<div class="jumbotron">
+			    <form id="myForm2">
+					<div class="form-group">
+			    		<input type="text" class="form-control" id="articleUrl" placeholder="URL">
+			        </div>
+			       	<div class="form-group">
+			        	<input type="text" class="form-control" id="articleName" placeholder="Title">
+			        </div>
+			        <button type="submit" class="btn btn-primary">Add</button>
+			    </form>
+			</div>	        
 	    </div>
 	    <div class="col-lg-12">
 	      <footer class="footer">
-	        <p>&copy; 2016</p>
+	        <p>No &copy; 2016</p>
 	      </footer>
 	    </div>
     </div> <!-- /container -->
@@ -62,5 +73,29 @@
   integrity="sha256-16cdPddA6VdVInumRGo6IbivbERE8p7CQR3HzTBuELA="
   crossorigin="anonymous"></script>
 	<script src="js/main.js"></script>
+	<script src="js/main-articles.js"></script>
+
+<script type="text/javascript">
+
+
+function AddOnloadEvent(f) {
+if(typeof window.onload != 'function') { window.onload = f; }
+else {
+   var cache = window.onload;
+   window.onload = function() {
+      if(cache) { cache(); }
+      f();
+      };
+   }
+}
+
+AddOnloadEvent(fetchBookmarks);
+AddOnloadEvent(fetchArticles);
+
+</script>
+
+
+
+
   </body>
 </html>
